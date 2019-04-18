@@ -3,13 +3,7 @@ import os
 
 #os.environ["DYLD_LIBRARY_PATH"] = "/Users/whitbeck/root_build/lib"
 
-backgroundSamples=["QCD_200to300",
-                   "QCD_300to500",
-                   "QCD_500to700",
-                   "QCD_700to1000",
-                   "QCD_1000to1500",
-                   "QCD_1500to2000",
-                   "QCD_2000toInf",
+backgroundSamples=[#"QCD_200to300",
                    "ZJets_100to200",
                    "ZJets_200to400",
                    "ZJets_400to600",
@@ -28,36 +22,43 @@ backgroundSamples=["QCD_200to300",
                    "TT_800to1200",
                    "TT_1200to2500",
                    "TT_2500toInf",
+                   "TT_1LFromT", #KL
+                   "TT_1LFromTbar", #KL
+                   "TT_2L",   #KL
                    "ST_s-channel",
-                   "ST_t-channel_antitop",
-                   "ST_t-channel_top",
+                   "ST_t-channel_antitop", # remove for 2018
+                   "ST_t-channel_top", # remove for 2018
                    "ST_tW_antitop",
-                   "ST_tW_antitop",
+                   "ST_tW_top",
 
-                   # "Other_WWTo1L1Nu2Q",
-                   # "Other_WWTo2L2Nu",
-                   # "Other_WWZ",
-                   # "Other_WZTo1L1Nu2Q",
-                   # "Other_WZTo1L3Nu",
-                   # "Other_WZZ",
-                   # "Other_ZZTo2L2Q",
-                   # "Other_ZZTo2Q2Nu",
-                   # "Other_ZZZ",
-                   # "Other_TTTT",
-                   # "Other_TTWJetsToLNu",
-                   # "Other_TTWJetsToQQ",
-                   # "Other_TTGJets",
-                   # "Other_TTZToLLNuNu",
-                   # "Other_TTZToQQ",
+                   "Other_WWTo1L1Nu2Q",
+                   "Other_WWTo2L2Nu", #remove for 2018
+                   "Other_WWZ", #remove for 2018
+                   "Other_WZTo1L1Nu2Q", #remove for 2018
+                   "Other_WZTo1L3Nu",
+                   "Other_WZZ", #remove for 2018
+                   "Other_ZZTo2L2Q",
+                   "Other_ZZTo2Q2Nu", #remove for 2018
+                   "Other_ZZZ", #remove for 2018
+                   "Other_TTTT", #remove for 2018
+                   "Other_TTWJetsToLNu",
+                   "Other_TTWJetsToQQ",
+                   "Other_TTGJets",
+                   "Other_TTZToLLNuNu",
+                   "Other_TTZToQQ",
 ]
 
-dataSamples=["MET_2016B",
-             "MET_2016C",
-             "MET_2016D",
-             "MET_2016E",
-             "MET_2016F",
-             "MET_2016G",
-             "MET_2016H"
+signalSamples=["VBFG_1000",
+              ]
+
+dataSamples=[#"MET_2018A",
+             "MET_2017B",
+             "MET_2017C",
+             "MET_2017D",
+             "MET_2017E",
+             "MET_2017F",
+             #"MET_2016G",
+             #"MET_2016H"
              ]
 
 def runPlotObsBaseline(sel,bkg,sig,data):
@@ -66,12 +67,19 @@ def runPlotObsBaseline(sel,bkg,sig,data):
 
 processes=[]
 for sample in backgroundSamples : 
-    p = Process(target=runPlotObsBaseline, args=("ZSBNoVBF",sample,"","") )
+    #p = Process(target=runPlotObsBaseline, args=("ZSBNoVBF",sample,"","") )
+    #p = Process(target=runPlotObsBaseline, args=("ZNoSelection",sample,"","") )
+    p = Process(target=runPlotObsBaseline, args=("ZSBHPVBF",sample,"","") )
+    p.start()
+    processes.append(p)
+
+for sample in signalSamples : 
+    p = Process(target=runPlotObsBaseline, args=("ZSBHPVBF","",sample, "") )
     p.start()
     processes.append(p)
 
 for sample in dataSamples : 
-    p = Process(target=runPlotObsBaseline, args=("ZSBNoVBF","","", sample) )
+    p = Process(target=runPlotObsBaseline, args=("ZSBHPVBF","","", sample) )
     p.start()
     processes.append(p)
 
