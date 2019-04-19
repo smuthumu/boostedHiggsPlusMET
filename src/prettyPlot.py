@@ -6,11 +6,12 @@ r.gROOT.SetBatch(True)
 r.gROOT.ProcessLine(".L tdrstyle.C")
 r.gROOT.ProcessLine("setTDRStyle()")
 
-plot_dir="ZSBHPVBF_2017_BeforeEcalCut_plots"
+#plot_dir="ZSBHPVBF_2017_BeforeEcalCut_plots"
+plot_dir="ZSBNoVBF_2018_BeforeHEMCut_plots"
 #input_file_name = "File_2018_postHEM_v0/Ecal_afterCut_250GeV_ZNoSelection_2018AD_MC.root"
 #input_file_name = "File_2018_postHEM_v0/Ecal_afterCutnHEMveto_ZNoSelection_2018AD_allbkg2018.root"
-input_file_name = "ZSBHPVBF_2017_BeforeEcalCut.root"
-output_file_name = "ZSBHPVBF_2017_BeforeEcalCut_output.root"
+input_file_name = "ZSBNoVBF_2018_BeforeHEMCut_2p6To3p0.root"
+output_file_name = "ZSBNoVBF_2018_BeforeHEMCut_2p6To3p0_Output.root"
 
 input_file = r.TFile(input_file_name,"READ")    
 
@@ -20,8 +21,8 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
     samples=[#["QCD_200to300",
              # "QCD_2000toInf"],
              ["ST_s-channel",
-              "ST_t-channel_antitop", # remove for 2018
-              "ST_t-channel_top", # remove for 2018
+              #"ST_t-channel_antitop", # remove for 2018
+              #"ST_t-channel_top", # remove for 2018
               "ST_tW_antitop",
               "ST_tW_top"],
              ["TT_600to800",
@@ -32,15 +33,15 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
               "TT_1LFromTbar",
               "TT_2L"],
              ["Other_WWTo1L1Nu2Q",
-              "Other_WWTo2L2Nu", # remove for 2018
-              "Other_WWZ", # remove for 2018
-              "Other_WZTo1L1Nu2Q", # remove for 2018
+              #"Other_WWTo2L2Nu", # remove for 2018
+              #"Other_WWZ", # remove for 2018
+              #"Other_WZTo1L1Nu2Q", # remove for 2018
               "Other_WZTo1L3Nu",
-              "Other_WZZ", # remove for 2018
+              #"Other_WZZ", # remove for 2018
               "Other_ZZTo2L2Q",
-              "Other_ZZTo2Q2Nu", # remove for 2018
-              "Other_ZZZ", # remove for 2018
-              "Other_TTTT", # remove for 2018
+              #"Other_ZZTo2Q2Nu", # remove for 2018
+              #"Other_ZZZ", # remove for 2018
+              #"Other_TTTT", # remove for 2018
               "Other_TTWJetsToLNu",
               "Other_TTWJetsToQQ",
               "Other_TTGJets",
@@ -61,21 +62,21 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
               "ZJets_1200to2500",
               "ZJets_2500toInf"]
              ]
-    signal_samples=["VBFG_1000"]
+    #signal_samples=["VBFG_1000"]
 
-    data_samples=["MET_2017B",#]
-                "MET_2017C",
-                "MET_2017D",
-                "MET_2017E",
-                "MET_2017F"]
+    data_samples=["MET_2018D"]
+                #"MET_2017C",
+                #"MET_2017D",
+                #"MET_2017E",
+                #"MET_2017F"]
               #"MET_2016G",
               #"MET_2016H"]
 
     samples_labels = ["Single top","TT","Other","WJets","ZJets"]
     samples_fill_color = [r.kOrange,r.kCyan,r.kOrange+3,r.kBlue,r.kGreen+1]
     samples_line_color = [1,1,1,1,1]
-    signal_samples_labels = ["VBFG 1000"]
-    signal_samples_line_color = [r.kRed]
+    #signal_samples_labels = ["VBFG 1000"]
+    #signal_samples_line_color = [r.kRed]
     
     samples_histo=[]
     
@@ -99,21 +100,21 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
             else : 
                 samples_histo[-1].Add(input_file.Get(plot_var+"_"+sample_name))
 ## for signal sample
-    signal_histo=[]
-    for i,signal_sample_names in enumerate(signal_samples) :   
-        #for j,signal_sample_name in enumerate(signal_sample_names): 
-        if i==0:
-            #if len(signal_histo) <= i : 
-            signal_histo.append(input_file.Get(plot_var+"_"+signal_sample_names))
-            #signal_histo.append(input_file.Get(plot_var+"_"+"VBFG 1000"))
-            #signal_histo[-1].SetLineColor(signal_samples_line_color[i])
-            signal_histo[-1].SetLineColor(r.kRed)
-            signal_histo[-1].SetName(plot_var+"_"+signal_samples_labels[i])
-            if signal_histo[-1]==None :
-                print "looking for:",plot_var+"_"+sample_name
-                assert(data_histo[-1]!=None)
-        else : 
-            signal_histo[-1].Add(input_file.Get(plot_var+"_"+signal_sample_name))
+   #    signal_histo=[]
+   # for i,signal_sample_names in enumerate(signal_samples) :   
+   #     #for j,signal_sample_name in enumerate(signal_sample_names): 
+   #     if i==0:
+   #         #if len(signal_histo) <= i : 
+   #         signal_histo.append(input_file.Get(plot_var+"_"+signal_sample_names))
+   #         #signal_histo.append(input_file.Get(plot_var+"_"+"VBFG 1000"))
+   #         #signal_histo[-1].SetLineColor(signal_samples_line_color[i])
+   #         signal_histo[-1].SetLineColor(r.kRed)
+   #         signal_histo[-1].SetName(plot_var+"_"+signal_samples_labels[i])
+   #         if signal_histo[-1]==None :
+   #             print "looking for:",plot_var+"_"+sample_name
+   #             assert(data_histo[-1]!=None)
+   #     else : 
+   #         signal_histo[-1].Add(input_file.Get(plot_var+"_"+signal_sample_name))
 
 ## end of signal sample 
     data_histo=[]
@@ -155,12 +156,12 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
     leg.SetLineColor(r.kWhite)
 
     if data_histo:
-       #leg.AddEntry(data_histo[-1],"data","p") 
-       leg.AddEntry(data_histo[-1],"MET 2017","p") 
+       leg.AddEntry(data_histo[-1],"data","p") 
+       #leg.AddEntry(data_histo[-1],"MET 2017","p") 
     for i in range(len(samples_histo)):
         leg.AddEntry(samples_histo[i],samples_labels[i],"f")
-    for i in range(len(signal_histo)):
-        leg.AddEntry(signal_histo[i],signal_samples_labels[i],"f")
+   # for i in range(len(signal_histo)):
+   #     leg.AddEntry(signal_histo[i],signal_samples_labels[i],"f")
 
     can = r.TCanvas("can","can",500,500)
     topPad = r.TPad("topPad","topPad",0.,0.4,.99,.99);
@@ -175,7 +176,7 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
     
     stack.Draw("histo")    
     #for j in signal_histo :
-    signal_histo[0].Draw("histo SAME")
+    #signal_histo[0].Draw("histo SAME")
     data_histo[0].Draw("SAME,e1p")
     leg.Draw()
 
@@ -249,8 +250,8 @@ def plot(plot_var = "photonIsoChrgLowSieie_EB_photonLoose" ):
     for h in samples_histo :
         r.TH1F(h).Write()
     data_histo[0].Write()
-    for i in signal_histo :
-        r.TH1F(i).Write()
+   # for i in signal_histo :
+   #     r.TH1F(i).Write()
 
 output_file = r.TFile(output_file_name,"RECREATE")
     

@@ -457,6 +457,7 @@ template<typename ntupleType> double computeMuonMT(ntupleType* ntuple){
 ////////////////////////////////////////////////////////////
 
 template<typename ntupleType> double fillJetPt1(ntupleType* ntuple){
+    if( ntuple->Jets->size() == 0 ) return -9999.;
     double eta = ntuple->Jets->at(0).Eta();
     if( ntuple->Jets->size() >= 1 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 1 ) 
@@ -465,6 +466,7 @@ template<typename ntupleType> double fillJetPt1(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetEta1(ntupleType* ntuple){
+    if( ntuple->Jets->size() == 0 ) return -9999.;
     double eta = ntuple->Jets->at(0).Eta();
     if( ntuple->Jets->size() >= 1 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 1 ) 
@@ -473,6 +475,7 @@ template<typename ntupleType> double fillJetEta1(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetPhi1(ntupleType* ntuple){
+    if( ntuple->Jets->size() == 0 ) return -9999.;
     double eta = ntuple->Jets->at(0).Eta();
     if( ntuple->Jets->size() >= 1 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 1) 
@@ -481,6 +484,7 @@ template<typename ntupleType> double fillJetPhi1(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetNEMF1(ntupleType* ntuple){
+    if( ntuple->Jets->size() == 0 ) return -9999.;
     double eta = ntuple->Jets->at(0).Eta();
     if( ntuple->Jets->size() >= 1 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 1) 
@@ -490,6 +494,7 @@ template<typename ntupleType> double fillJetNEMF1(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetNHEF1(ntupleType* ntuple){
+    if( ntuple->Jets->size() == 0 ) return -9999.;
     double eta = ntuple->Jets->at(0).Eta();
     if( ntuple->Jets->size() >= 1 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 1) 
@@ -499,6 +504,7 @@ template<typename ntupleType> double fillJetNHEF1(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetPt2(ntupleType* ntuple){
+    if( ntuple->Jets->size() <2 ) return -9999.;
     double eta = ntuple->Jets->at(1).Eta();
     if( ntuple->Jets->size() >= 2 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 2) 
@@ -508,6 +514,7 @@ template<typename ntupleType> double fillJetPt2(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetEta2(ntupleType* ntuple){
+    if( ntuple->Jets->size() <2 ) return -9999.;
     double eta = ntuple->Jets->at(1).Eta();
     if( ntuple->Jets->size() >= 2 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 2) 
@@ -516,6 +523,7 @@ template<typename ntupleType> double fillJetEta2(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetPhi2(ntupleType* ntuple){
+    if( ntuple->Jets->size() <2 ) return -9999.;
     double eta = ntuple->Jets->at(1).Eta();
     if( ntuple->Jets->size() >= 2 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 2) 
@@ -524,6 +532,7 @@ template<typename ntupleType> double fillJetPhi2(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetNEMF2(ntupleType* ntuple){
+    if( ntuple->Jets->size() <2 ) return -9999.;
     double eta = ntuple->Jets->at(1).Eta();
     if( ntuple->Jets->size() >= 2 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 2) 
@@ -533,6 +542,7 @@ template<typename ntupleType> double fillJetNEMF2(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetNHEF2(ntupleType* ntuple){
+    if( ntuple->Jets->size() <2 ) return -9999.;
     double eta = ntuple->Jets->at(1).Eta();
     if( ntuple->Jets->size() >= 2 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 2) 
@@ -542,6 +552,7 @@ template<typename ntupleType> double fillJetNHEF2(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetPt3(ntupleType* ntuple){
+    if( ntuple->Jets->size() <3 ) return -9999.;
     double eta = ntuple->Jets->at(2).Eta();
     if( ntuple->Jets->size() >= 3 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 3) 
@@ -552,6 +563,7 @@ template<typename ntupleType> double fillJetPt3(ntupleType* ntuple){
 
 
 template<typename ntupleType> double fillJetEta3(ntupleType* ntuple){
+    if( ntuple->Jets->size() <3 ) return -9999.;
     double eta = ntuple->Jets->at(2).Eta();
     if( ntuple->Jets->size() >= 3 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 3) 
@@ -561,6 +573,7 @@ template<typename ntupleType> double fillJetEta3(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetPhi3(ntupleType* ntuple){
+    if( ntuple->Jets->size() <3 ) return -9999.;
     double eta = ntuple->Jets->at(2).Eta();
     if( ntuple->Jets->size() >= 3 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 3) 
@@ -569,6 +582,7 @@ template<typename ntupleType> double fillJetPhi3(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetNEMF3(ntupleType* ntuple){
+    if( ntuple->Jets->size() <3 ) return -9999.;
     double eta = ntuple->Jets->at(2).Eta();
     if( ntuple->Jets->size() >= 3 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 3) 
@@ -578,6 +592,7 @@ template<typename ntupleType> double fillJetNEMF3(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetNHEF3(ntupleType* ntuple){
+    if( ntuple->Jets->size() <3 ) return -9999.;
     double eta = ntuple->Jets->at(2).Eta();
     if( ntuple->Jets->size() >= 3 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 3) 
@@ -587,6 +602,7 @@ template<typename ntupleType> double fillJetNHEF3(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetPt4(ntupleType* ntuple){
+    if( ntuple->Jets->size() <4 ) return -9999.;
     double eta = ntuple->Jets->at(3).Eta();
     if( ntuple->Jets->size() >= 4 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 4) 
@@ -596,6 +612,7 @@ template<typename ntupleType> double fillJetPt4(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetEta4(ntupleType* ntuple){
+    if( ntuple->Jets->size() <4 ) return -9999.;
     double eta = ntuple->Jets->at(3).Eta();
     if( ntuple->Jets->size() >= 4 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
         return ntuple->Jets->at(3).Eta();
@@ -612,6 +629,7 @@ template<typename ntupleType> double fillJetEta4(ntupleType* ntuple){
 }
 */
 template<typename ntupleType> double fillJetPhi4(ntupleType* ntuple){
+    if( ntuple->Jets->size() <4 ) return -9999.;
     double eta = ntuple->Jets->at(3).Eta();
     if( ntuple->Jets->size() >= 4 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 4) 
@@ -620,6 +638,7 @@ template<typename ntupleType> double fillJetPhi4(ntupleType* ntuple){
         return -999.;
 }
 template<typename ntupleType> double fillJetNEMF4(ntupleType* ntuple){
+    if( ntuple->Jets->size() <4 ) return -9999.;
     double eta = ntuple->Jets->at(3).Eta();
     if( ntuple->Jets->size() >= 4 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 4) 
@@ -629,6 +648,7 @@ template<typename ntupleType> double fillJetNEMF4(ntupleType* ntuple){
 }
 
 template<typename ntupleType> double fillJetNHEF4(ntupleType* ntuple){
+    if( ntuple->Jets->size() <4 ) return -9999.;
     double eta = ntuple->Jets->at(3).Eta();
     if( ntuple->Jets->size() >= 4 && fabs(eta)>=2.6 && fabs(eta)<=3.0)
     //if( ntuple->Jets->size() >= 4) 
@@ -720,7 +740,8 @@ template<typename ntupleType> double fillOne(ntupleType* ntuple){
 
 
 template<typename ntupleType> double fillNAK8Jets(ntupleType* ntuple){
-  return ntuple->JetsAK8->size();
+    if( ntuple->JetsAK8->size() == 0 ) return -999.;
+    return ntuple->JetsAK8->size();
 }
 
 template<typename ntupleType> double fillNJets(ntupleType* ntuple){
@@ -979,11 +1000,11 @@ template<typename ntupleType> double fillDDT(ntupleType* ntuple){
 //////////////////
 // For ECAL Eta
 ////////////////
-
+/*
 template<typename ntupleType> bool EcalEta1Cut(ntupleType* ntuple){
     return (fabs(fillJetEta1(ntuple)) > 2.6 && fabs(fillJetEta1(ntuple)) < 3.2);
 }
-
+*/
 /*
 template<typename ntupleType> bool EcalEtaCut(ntupleType* ntuple){
      if(ntuple->Jets->size()==0) return false;
@@ -1058,13 +1079,10 @@ template<typename ntupleType> vector<TLorentzVector>  cleanedVBFjets(ntupleType*
 } 
 
 template<typename ntupleType> double fillVBF_Mjj(ntupleType* ntuple){
-    //double fwdMjj = -1.0
     vector<TLorentzVector> vbf_jets = cleanedVBFjets(ntuple,0);
-    //if (vbf_jets[0].Pt()>30.0 && vbf_jets[1].Pt()>30.0){
-    //if( vbf_jets.size() < 2 ) return -1.;
+    //if( vbf_jets.size() < 2 ) return -9999.;
         TLorentzVector temp(vbf_jets[0]);
         temp+=vbf_jets[1];
-     //   fwdMjj = temp.M();
     return temp.M(); 
 }
 
@@ -1177,19 +1195,17 @@ template<typename ntupleType> bool LowPurityCut(ntupleType* ntuple){
 
 // 1) Baseline selection without VBF cut
 template<typename ntupleType> bool baselineCutNoVBF(ntupleType* ntuple){
-  return (  METCut(ntuple) &&
-	        AK8JetPtCut(ntuple) && 
-	        DeltaPhiCuts(ntuple) &&
-	        ntuple->Photons->size()==0 &&  
-            ntuple->Muons->size()==0 &&
-            ntuple->Electrons->size()==0 &&
-            ntuple->BTags == 0 && // ntuple->BTagsDeepCSV==0; 
-            ntuple->isoElectronTracks==0 && ntuple->isoMuonTracks==0 && ntuple->isoPionTracks==0 &&
-            //preHEMRunCut(ntuple) && // preHEM in A-B
-            //postHEMRunCut(ntuple) && // postHEM in B-D
+  return (  //METCut(ntuple) 
+	        //AK8JetPtCut(ntuple) 
+	        //DeltaPhiCuts(ntuple) &&
+	        //ntuple->Photons->size()==0 &&  
+            //ntuple->Muons->size()==0 &&
+            //ntuple->Electrons->size()==0 &&
+            ntuple->BTags == 0  // ntuple->BTagsDeepCSV==0; 
+            //ntuple->isoElectronTracks==0 && ntuple->isoMuonTracks==0 && ntuple->isoPionTracks==0 
             //EcalNEMFCut(ntuple)&&
             //HEMRunFilterCut(ntuple) && // run & HEMdPhiVeto Filter
-	        FiltersCut(ntuple)
+	        //FiltersCut(ntuple)
          );
 }
     
@@ -1704,12 +1720,14 @@ template<typename ntupleType> bool doubletagSBCut_photon(ntupleType* ntuple){
 /////////////////////////////////////////////////
 template<typename ntupleType> bool signalTriggerCut(ntupleType* ntuple){
     //return ntuple->TriggerPass->at(42) == 1 || ntuple->TriggerPass->at(43) == 1 || ntuple->TriggerPass->at(44) == 1 || ntuple->TriggerPass->at(45) == 1 ; 
-    return (ntuple->TriggerPass->at(110) == 1 || ntuple->TriggerPass->at(114) == 1 || 
+    return (ntuple->TriggerPass->at(126) == 1 || ntuple->TriggerPass->at(128) == 1 || ntuple->TriggerPass->at(131) == 1 || ntuple->TriggerPass->at(133) == 1 || ntuple->TriggerPass->at(135) == 1 || ntuple->TriggerPass->at(136) == 1); 
+   /* return (ntuple->TriggerPass->at(110) == 1 || ntuple->TriggerPass->at(114) == 1 || 
            ntuple->TriggerPass->at(116) == 1 || ntuple->TriggerPass->at(118) == 1 || 
            ntuple->TriggerPass->at(122) == 1 || ntuple->TriggerPass->at(124) == 1 || 
            ntuple->TriggerPass->at(126) == 1 || ntuple->TriggerPass->at(129) == 1 || 
            ntuple->TriggerPass->at(131) == 1 || ntuple->TriggerPass->at(133) == 1 || 
            ntuple->TriggerPass->at(134) == 1) ; 
+*/
 }
 
 template<typename ntupleType> bool singleMuTriggerCut(ntupleType* ntuple){

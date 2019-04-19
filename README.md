@@ -1,14 +1,14 @@
-Repo for studying boosted Higgs tools with the RA2b trees.  This package relies on another package for setting up some basic 
+Repo for VBF Bulk Graviton to Z(had)Z(inv) with the RA2b trees.  This package relies on another package for setting up some basic 
 classes to facilitate some things.  
 
 #General Stuff:
 
-#### Setting up the code:
+#### Setting up the code: (only at lpc or lxplus (not needed for beowulf))
 <pre>
-cmsrel CMSSW_7_4_2
-cd CMSSW_7_4_2/src/
+cmsrel CMSSW_10_1_7
+cd CMSSW_10_1_7/src/
 cmsenv
-git clone https://github.com/awhitbeck/boostedHiggsPlusMET.git
+git clone https://github.com/klamichhane/boostedHiggsPlusMET.git
 </pre>
 
 NEEDS UPDATING
@@ -17,19 +17,40 @@ NEEDS UPDATING
 
 NEEDS UPDATING
  
-#### Batch:
+#### Batch: [Currently working on beowulf (in house at TTU)]
 
 All batch submissions are done through `submitBatch.sh`.  Code is tar'ed sent to worker nodes and outputs are transferd to EOS.  
 You will need to have a directory in your eos called boostedHiggsPlusMET.  This script by default takes a branch as input
 and will create a new EOS area with the name of the latest commit hash from the remote repository (origin is used).
 
 <pre>
-bash makeTar.sh        
+source ../setup.sh
+make plotObs_baseline        
+</pre>
+Samples are at skimSamples.cc. definitions.h has all the selection functions defined and plotObs_baseline.cc has the selection label (category) and all the plots that we want to plot.
+Jobs are run with:
+</pre>
+python runPlotObs_baseline.cc
+At lpc:
+../bin/plotObs_baseline selectionlabel Number-of-Events
+</pre>
+This will create histograms file for all individual sample. In order to create the stack plots, we need to hadd these histograms and give it as input to prettyPlot.py.
+To create stack plot:
+</pre>
+python prettyPlot.py
 </pre>
 
-In case you want to submit jobs one by one, you can re-tar your area with `makeTag.sh` and generate the relevant directory
-structure in your target EOS area using `makeOutputDir.sh`.  The latter should be passed the target directory.  Individual
-jobs can then be submitted with e.g.:
+#### Region descriptions/definitions
+
+Baseline selections: we require 1 AK8 jet with pt>200 GeV, MET>200 GeV (this can be changed to 250 or even 300 GeV), veto: electrons, muons, photons, b-jets, all recommended Filters cut, JetID, and MET triggers for data.
+We categorize the signal region (SR) and sideband region (SB) based on the AK8 Leading jet mass (softDrop); SR [65,105] and SB is [35,65 and >135]. In addition we categorize purity based on tau21 values: <0.45 (high purity) and [0.45,0.75] is low purity.
+In addition, we have VBF selection for the forward jets: jet pt>30 GeV (considering to go for 50 GeV), check if these jets are consistent with jets from Z-boson, if so remove them, then forward mjj > 500 GeV, fwd dEta > 4.0, product of fwd jets eta < 0 and if more than one pair exists then choose the one with larger mjj. These selections are loose, we will study more on optimizing these selections.
+
+
+We stay blind on SR until pre-approval. 
+
+Rest of the items below are outdated, needs to be updated...
+
 
 ```bash
 condor_submit batchExecute.jdl exec_name="plotObs_baseline" arguments="${hash} plotObs_baseline"

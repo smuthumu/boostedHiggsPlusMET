@@ -190,7 +190,7 @@ void process(string selection_label,
   plot J1pt_Pt1plot(*fillLeadingJetPt<RA2bTree>,"AK8L1J_Pt1_"+selection_label,"p_{T,J} [GeV]",35,200.,1600.); //40 GeV bin;
   plot J1pt_Etaplot(*fillLeadingJetEta<RA2bTree>,"J1pt_Eta_"+selection_label,"#eta_{AK8J} [GeV]",50,-5.,5.); //50 GeV bin;
   plot J1pt_Eta1plot(*fillLeadingJetEta<RA2bTree>,"J1pt_Eta1_"+selection_label,"#eta_{AK8J} [GeV]",30,-3.,3.); //0.2 GeV bin;
-
+/*
   plot VBFmjj_plot(*fillVBF_Mjj<RA2bTree>,"VBFmjj_"+selection_label,"m_{jj}^{VBF} [GeV]",40,0,4000);
   plot VBFptjj_plot(*fillVBF_Ptjj<RA2bTree>,"VBFptjj_"+selection_label,"pt_{jj}^{VBF} [GeV]",40,0,2000);
   plot VBFj1pt_plot(*fillVBF_j1Pt<RA2bTree>,"VBFj1pt_"+selection_label,"pt_{j1}^{VBF} [GeV]",25,0,1000);
@@ -202,7 +202,7 @@ void process(string selection_label,
   plot VBFj1Phi_plot(*fillVBF_j1Phi<RA2bTree>,"VBFj1Phi_"+selection_label,"#Phi_{j1}^{VBF}",32,-3.2,3.2);
   plot VBFj2Phi_plot(*fillVBF_j2Phi<RA2bTree>,"VBFj2Phi_"+selection_label,"#Phi_{j2}^{VBF}",32,-3.2,3.2);
   plot VBFj1j2Eta_plot(*fillVBF_j1j2Eta<RA2bTree>,"VBFj1j2Eta_"+selection_label,"#eta_{j1.j2}^{VBF}",100,-25,25);
-
+*/
  
   vector<plot> plots;
   plots.push_back(NVtxplot);
@@ -299,7 +299,7 @@ void process(string selection_label,
   plots.push_back(J1pt_Pt1plot);
   plots.push_back(J1pt_Etaplot);
   plots.push_back(J1pt_Eta1plot);
-
+/*
   plots.push_back(VBFmjj_plot);
   plots.push_back(VBFptjj_plot);
   plots.push_back(VBFj1pt_plot);
@@ -311,7 +311,7 @@ void process(string selection_label,
   plots.push_back(VBFj1Phi_plot);
   plots.push_back(VBFj2Phi_plot);
   plots.push_back(VBFj1j2Eta_plot);
-
+*/
 
   // background MC samples
   for( int iSample = 0 ; iSample < skims.ntuples.size() ; iSample++){
@@ -406,7 +406,7 @@ void process(string selection_label,
     }
 
     for( int iPlot = 0 ; iPlot < plots.size() ; iPlot++){
-        //if (plots[iPlot].is2Dhist) continue;
+        if (plots[iPlot].is2Dhist) continue;
         plots[iPlot].Write();
     }// end loop over plots
     
