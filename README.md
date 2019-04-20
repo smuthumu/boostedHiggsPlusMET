@@ -9,6 +9,7 @@ cmsrel CMSSW_10_1_7
 cd CMSSW_10_1_7/src/
 cmsenv
 git clone -b parallelize_dev https://github.com/vhegde91/boostedHiggsPlusMET
+cd boostedHiggsPlusMET
 </pre>
 
 NEEDS UPDATING
@@ -19,7 +20,7 @@ NEEDS UPDATING
  
 #### Batch: [Currently working on beowulf (in house at TTU)]
 ```bash
-source ../setup.sh
+source setup.sh
 make plotObs_baseline        
 ```
 

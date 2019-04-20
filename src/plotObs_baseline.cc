@@ -325,6 +325,7 @@ void process(string selection_label,
     ntupleBranchStatus<RA2bTree>(ntuple);
     TString filename;
     double weight = 0.;
+    //    cout<<"Name:"<<ntuple->fChain->GetName()<<" numEvents:"<<numEvents<<endl;
     for( int iEvt = 0 ; iEvt < min(MAX_EVENTS,numEvents) ; iEvt++ ){
     //for( int iEvt = 0 ; iEvt < min(0,numEvents) ; iEvt++ ){
         ntuple->GetEntry(iEvt);
