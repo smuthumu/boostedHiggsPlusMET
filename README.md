@@ -24,7 +24,7 @@ source setup.sh
 make plotObs_baseline        
 ```
 
-Samples are at skimSamples.cc. definitions.h has all the selection functions defined and plotObs_baseline.cc has the selection label (category) and all the plots that we want to plot.
+Samples are at skimSamples.cc. To run on LPC, change the path of files to root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/ instead of /home/whitbeck/raid/temp/SusyRA2Analysis2015/Skims/. The latter is for running on beowulf. definitions.h has all the selection functions defined and plotObs_baseline.cc has the selection label (category) and all the plots that we want to plot.
 Jobs are run with:
 
 ```bash
