@@ -40,6 +40,21 @@ To create stack plot:
 python prettyPlot.py
 ```
 
+#### Submitting jobs to condor
+To make the code run on all the samples,
+```
+./allJobSub.sh
+```
+This submits one condor job for every BG sample, data sample and signal sample. The name of each sample is listed in MC_BGsampleList.txt, Data_sampleList.txt and VBFG_sampleList.txt
+If you want to skip any sample, add a comment (#) at the beginning of the line in *sampleList.txt.
+
+Jobs can be submitted seperately for BG, data and signal using the following commands:
+```
+./submitJobs.sh MC_BGsampleList.txt plotObs_baseline ZSBNoVBF
+./submitJobs.sh Data_sampleList.txt plotObs_baseline ZSBNoVBF
+./submitJobs.sh VBFG_sampleList.txt plotObs_baseline ZSBNoVBF
+```
+The last argument is the type of selection you want to use. A list of selections is shown in https://github.com/vhegde91/boostedHiggsPlusMET/blob/parallelize_dev/src/plotObs_baseline.cc#L30-L60 . Last but one arguement is the name of the executable you created using make XXX.
 
 #### Region descriptions/definitions
 
