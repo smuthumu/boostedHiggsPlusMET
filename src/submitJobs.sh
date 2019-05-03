@@ -14,8 +14,8 @@ echo "Done making tar"
 grep -v '^#' $input_Scan | while read -a massP
 do
     echo "Making jdl file for " ${massP[0]}
-    jdl_file="condor_${selectionType}_${input_Scan}_${massP[0]}_job.jdl"
-    log_prefix="condor_${selectionType}_${input_Scan}_${massP[0]}_job"
+    jdl_file="condor_${selectionType}_${massP[0]}_job.jdl"
+    log_prefix="condor_${selectionType}_${massP[0]}_job"
     echo "universe = vanilla">$jdl_file
     echo "Executable = $exeAtWorker">>$jdl_file
     echo "Should_Transfer_Files = YES">>$jdl_file
