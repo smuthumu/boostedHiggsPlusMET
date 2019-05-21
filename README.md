@@ -8,7 +8,8 @@ classes to facilitate some things.
 cmsrel CMSSW_10_1_7
 cd CMSSW_10_1_7/src/
 cmsenv
-git clone https://github.com/klamichhane/boostedHiggsPlusMET.git
+git clone -b parallelize_dev https://github.com/vhegde91/boostedHiggsPlusMET
+cd boostedHiggsPlusMET
 </pre>
 
 NEEDS UPDATING
@@ -19,11 +20,11 @@ NEEDS UPDATING
  
 #### Batch: [Currently working on beowulf (in house at TTU)]
 ```bash
-source ../setup.sh
+source setup.sh
 make plotObs_baseline        
 ```
 
-Samples are at skimSamples.cc. definitions.h has all the selection functions defined and plotObs_baseline.cc has the selection label (category) and all the plots that we want to plot.
+Samples are at skimSamples.cc. To run on LPC, change the path of files to root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/ instead of /home/whitbeck/raid/temp/SusyRA2Analysis2015/Skims/. The latter is for running on beowulf. definitions.h has all the selection functions defined and plotObs_baseline.cc has the selection label (category) and all the plots that we want to plot.
 Jobs are run with:
 
 ```bash
@@ -39,6 +40,19 @@ To create stack plot:
 python prettyPlot.py
 ```
 
+#### Submitting jobs to condor
+To make the code run on all the samples,
+```
+./allJobSub.sh
+```
+This submits one condor job for every BG sample, data sample and signal sample. The name of each sample is listed in All_sampleList.txt.
+If you want to skip any sample, add a comment (#) at the beginning of the line in All_sampleList.txt.
+
+Jobs can be submitted using the following command instead of using ./allJobSub.sh:
+```
+./submitJobs.sh All_sampleList.txt plotObs_baseline ZSBNoVBF
+```
+The last argument is the type of selection you want to use. A list of selections is shown in https://github.com/vhegde91/boostedHiggsPlusMET/blob/parallelize_dev/src/plotObs_baseline.cc#L30-L60 . Last but one arguement is the name of the executable you created using make XXX.
 
 #### Region descriptions/definitions
 

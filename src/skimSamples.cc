@@ -6,9 +6,9 @@
 #include <vector>
 #include <map>
 
-static const TString BASE_DIR_DATA = "/home/whitbeck/raid/temp/SusyRA2Analysis2015/Skims/Run2ProductionV17/";
-static const TString BASE_DIR = "/home/whitbeck/raid/temp/SusyRA2Analysis2015/Skims/Run2ProductionV16/";
-static const TString BASE_DIR_SIG = "/home/whitbeck/raid/temp/SusyRA2Analysis2015/Skims/Run2ProductionV16/VBF_G_V2/";
+static const TString BASE_DIR_DATA = "root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/Skims/Run2ProductionV17/";
+static const TString BASE_DIR = "root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/Run2ProductionV16/";
+static const TString BASE_DIR_SIG = "root://cmseos.fnal.gov//store/group/lpcdm/noreplica/klamichh/SUSY_VBFZZ_Sig_Samples/";
 static const bool RE_MINIAOD = false;
 
 class skimSamples{
