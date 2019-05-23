@@ -1,0 +1,16 @@
+system: root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/Skims/Run2ProductionV17/
+        root://cmseos.fnal.gov//store/user/lpcsusyhad/SusyRA2Analysis2015/Run2ProductionV17/
+sm-debug  i=0   sample name=SnglT    nevents=59178
+SnglT: 0/59178
+sm-debug  i=1   sample name=TT    nevents=998544
+TT: 0/998544
+sm-debug  i=2   sample name=Other    nevents=1371383
+Other: 0/1371383
+sm-debug  i=3   sample name=WJets    nevents=1221710
+WJets: 0/1221710
+sm-debug  i=4   sample name=ZJets    nevents=4228544
+ZJets: 0/4228544
+Skims check 1: NonTh154
+Skims check Num evts: 674384
+NonTh154: 0/674384
+data_MET: 0/10000
